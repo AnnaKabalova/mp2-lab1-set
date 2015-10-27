@@ -17,7 +17,7 @@ TBitField::TBitField(int _BitLen)
 		for (int i = 0; i < MemLen; i++)
 			pMem[i] = 0;
 	}
-	else throw _BitLen;
+	else throw std::exception("_Bitlen <0");
 }
 
 TBitField::TBitField(const TBitField &bf) // конструктор копирования
@@ -62,7 +62,7 @@ void TBitField::SetBit(const int n) // установить бит
 		int x = n;
 		pMem[GetMemIndex(x)] = pMem[GetMemIndex(x)] | GetMemMask(x);
 	}
-	else throw n;
+	else throw std::exception("index <0 or too large");
 }
 
 void TBitField::ClrBit(const int n) // очистить бит
@@ -72,7 +72,7 @@ void TBitField::ClrBit(const int n) // очистить бит
 		int x = n;
 		pMem[GetMemIndex(x)] &= ~(GetMemMask(x));
 	}
-	else throw n;
+	else throw std::exception("index <0 or too large");
 }
 
 int TBitField::GetBit(const int n) const // получить значение бита
@@ -86,7 +86,7 @@ int TBitField::GetBit(const int n) const // получить значение б
 		else
 			return 0;
 	}
-	else throw n;
+	else throw std::exception("index <0 or too large");
 }
 
 // битовые операции

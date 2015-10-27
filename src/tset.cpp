@@ -14,14 +14,12 @@ TSet::TSet(int mp = 100) : BitField(mp), MaxPower(mp)
 // конструктор копирования
 TSet::TSet(const TSet &s) : BitField(s.BitField)
 {
-	//BitField = s.BitField;
 	MaxPower = s.MaxPower;
 }
 
 // конструктор преобразования типа
 TSet::TSet(const TBitField &bf) : BitField(bf)
 {
-	//BitField = bf;
 	MaxPower = bf.GetLength();
 }
 
@@ -100,10 +98,6 @@ TSet TSet::operator+(const int Elem) // объединение с элемент
 
 TSet TSet::operator-(const int Elem) // разность с элементом
 {
-	/*TBitField tmp(MaxPower);
-	tmp.SetBit(Elem);
-	TSet temp(BitField & tmp);
-	return temp;*/
 	TSet tmp(*this);
 	tmp.BitField.ClrBit(Elem);
 	return tmp;
